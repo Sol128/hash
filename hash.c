@@ -291,7 +291,7 @@ hash_iter_t *hash_iter_crear(const hash_t *hash) {
 
 bool hash_iter_al_final(const hash_iter_t *iter){
 	size_t siguiente_lista = siguiente_posicion_con_elementos(iter->hash, iter->pos);
-	if((iter->hash->cantidad == 0) || (iter->pos == siguiente_lista&&lista_iter_al_final(iter->iter_actual))){
+	if((iter->hash->cantidad == 0) || (iter->pos == siguiente_lista && lista_iter_al_final(iter->iter_actual))){
 		return true;
 	}
 	return false;

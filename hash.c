@@ -18,7 +18,7 @@ struct hash {
 };
 
 typedef struct nodo {
-	char* clave;
+	const char* clave;
 	void* dato;
 }nodo_t;
 

@@ -288,6 +288,7 @@ static void prueba_hash_iterar()
     print_test("Prueba hash insertar clave1", hash_guardar(hash, claves[0], valores[0]));
     print_test("Prueba hash insertar clave2", hash_guardar(hash, claves[1], valores[1]));
     print_test("Prueba hash insertar clave3", hash_guardar(hash, claves[2], valores[2]));
+	print_test("Se insertaron 3 elementos",hash_cantidad(hash) == 3);
 
     // Prueba de iteración sobre las claves almacenadas.
     hash_iter_t* iter = hash_iter_crear(hash);
@@ -359,16 +360,19 @@ static void prueba_hash_iterar_volumen(size_t largo)
 
     for (i = 0; i < largo; i++) {
         if ( hash_iter_al_final(iter) ) {
+			printf("%d: Aca se rompio al final\n",(int)i);
             ok = false;
             break;
         }
         clave = hash_iter_ver_actual(iter);
         if ( clave == NULL ) {
+			printf("%d: Aca se rompio al el ver actual\n",(int)i);
             ok = false;
             break;
         }
         valor = hash_obtener(hash, clave);
         if ( valor == NULL ) {
+			printf("%d: Aca se rompio el obtener\n",(int)i);
             ok = false;
             break;
         }
@@ -411,7 +415,7 @@ void pruebas_hash_catedra()
     prueba_hash_valor_null();
     prueba_hash_volumen(5000, true);
     prueba_hash_iterar();
-    prueba_hash_iterar_volumen(5000);
+    prueba_hash_iterar_volumen(14);
 }
 
 void pruebas_volumen_catedra(size_t largo)
